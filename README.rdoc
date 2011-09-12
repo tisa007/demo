@@ -1,7 +1,7 @@
 this is a demo project.
 
 = demos of ruby in web
-it deamonstrate how to build a web
+it demonstrate how to build a web
 Includes Bundler, DataMapper, RSpec2, and Haml, all ready to go.
 
 == Configuration
