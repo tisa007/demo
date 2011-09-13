@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>hello</title>
+    </head>
+    <body>
+        <div>
+            <h2>Enter a url</h2>
+            <p>support vancl, 360buy, m18, taobao, amazon currently.</p>
+            <form action="" method="post">
+                <input type="text" name="url" value=""/>
+                <input type="submit" name="" value="parse">
+            </form>
+        </div>
+        <div id="result">
+            <% if result %>
+                <% result.each do |k,v| %>
+                    <p>
+                    <%=k %>
+                    <%=v %>
+                    </p>
+                <% end %>
+            <% end %>
+        </div>
+    </body>
+</html>
