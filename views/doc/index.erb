@@ -1,3 +1,5 @@
 <% @docs.each do |doc| %>
-    <%= doc %>
+  <pre>
+  <%=html_escape doc.inspect %>
+  </pre>
 <% end %>

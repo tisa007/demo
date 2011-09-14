@@ -2,7 +2,7 @@ require 'rubygems'
 require 'sinatra'
 require 'erb'
 require 'data_mapper'
-require  'dm-migrations'
+require 'dm-migrations'
 
 Dir.glob("#{File.dirname(__FILE__)}/libs/*.rb") { |rb| require rb }
 Dir.glob("#{File.dirname(__FILE__)}/models/*.rb") { |rb| require rb }
@@ -16,32 +16,37 @@ set :public, File.dirname(__FILE__) + '/public'
 
 DataMapper::Logger.new($stdout, :debug)
 DataMapper::setup(:default, "sqlite3:///#{File.dirname(__FILE__)}/demo.db")
+DataMapper::Model.raise_on_save_failure = true
 DataMapper.auto_migrate!
 DataMapper.auto_upgrade!
 
+include ERB::Util
+
 get '/' do
-    erb :"home/index"
+  erb :"home/index"
 end
 
 get '/parse' do
-    erb :"parse/index", {}, {:result => nil}
+  @products = Product.all
+  puts @products.inspect
+  erb :"parse/index"
 end
 
 post '/parse' do
-    parser = Parser.new
-    result = parser.parse params[:url]
-    erb :"parse/index", {}, {:result => result}
+  product = Product.parse(params[:url])
+  product.save
+  redirect '/parse'
 end
 
 get '/docs' do
-    @docs = Doc.all
-    erb :"doc/index"
+  @docs = Doc.all
+  erb :"doc/index"
 end
 get '/docs/new' do
-    erb :"doc/new"
+  erb :"doc/new"
 end
 post '/docs/new' do
-    doc = Doc.new
-    doc.save
-    redirect '/docs'
+  doc = Doc.new(:title=>params[:title])
+  doc.save
+  redirect '/docs'
 end

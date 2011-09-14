@@ -1,41 +1,53 @@
 <html>
-    <head>
-        <title>hello</title>
-        <link rel="stylesheet" href="/style.css" type="text/css" media="screen" charset="utf-8">
-        <link rel="stylesheet" href="/style.markitup.css" type="text/css" media="screen" charset="utf-8">
-        <script type="text/javascript" charset="utf-8" src="/jquery.min.js" ></script>
-        <script type="text/javascript" charset="utf-8" src="/jquery.markitup.js" ></script>
-        <script type="text/javascript" charset="utf-8" src="/markitup.set.js" ></script>
-        <script type="text/javascript" charset="utf-8">
-            $().ready(
-                function(){
-                    $('#doc_form textarea').markItUp(mySettings);
-                }
-            );
-        </script>
+  <head>
+    <title>hello</title>
+    <link rel="stylesheet" href="/style.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="/style.markitup.css" type="text/css" media="screen" charset="utf-8">
+    <script type="text/javascript" charset="utf-8" src="/jquery.min.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/jquery.markitup.js" ></script>
+    <script type="text/javascript" charset="utf-8" src="/markitup.set.js" ></script>
+    <script type="text/javascript" charset="utf-8">
+      $().ready(
+          function(){
+          $('#doc_form textarea').markItUp(mySettings);
+          }
+          );
+      </script>
     </head>
     <body>
-        <div id="page">
-            <div id="header">
-                <img src="/images/logo.png" alt="demo.tisa7.com" />
-            </div>
-            <div id="mainer" class="fix">
-                <div id="sider">
-                    <h3>links</h3>
-                    <ul>
-                        <li><a href="/parse">parse</a></li>
-                        <li><a href="/docs">docs</a></li>
-                        <li><a href="/parse">parse</a></li>
-                    </ul>
-                </div>
-                <div id="primary">
-                    <%= yield %>
-                </div>
-            </div>
-            <div id="footer">
-                <p>copyright 2011 &copy; tisa7.com<p>
-            </div>
-
+      <div id="page">
+        <div id="header">
+          <img src="/images/logo.png" alt="demo.tisa7.com" />
         </div>
+        <div id="mainer" class="fix">
+          <div id="sider">
+            <h3>links</h3>
+            <ul>
+              <li>
+              <a href="/parse">parse</a>
+              </li>
+              <li>
+                <a href="/docs">docs</a>
+              <div class="tr">
+                <a href="/docs/new">new</a>
+              </div>
+              </li>
+              <li>
+                <a href="/images">images</a>
+                <div class="tr">
+                <a href="/images/new">new</a>
+              </div>
+              </li>
+            </ul>
+          </div>
+          <div id="primary">
+            <%= yield %>
+          </div>
+        </div>
+        <div id="footer">
+          <p>copyright 2011 &copy; tisa7.com<p>
+        </div>
+
+      </div>
     </body>
-</html>
+  </html>

@@ -6,7 +6,4 @@ class Doc
     property :body, Text
     property :create_at, DateTime
 
-    def initialize()
-        
-    end
 end
